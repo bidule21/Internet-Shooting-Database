@@ -1,6 +1,6 @@
 package net.vl0w.isd;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,24 +8,13 @@ import java.util.Set;
 
 public class Result {
 
-	private Date date;
-	private Weapon weapon;
 	private String description;
 	private Map<Segment, List<Shot>> shotMap;
 	private boolean decimalsAllowed;
 
-	Result(Weapon weapon) {
-		this.weapon = weapon;
+	Result() {
 		this.shotMap = new HashMap<Segment, List<Shot>>();
 		this.decimalsAllowed = true;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Date getDate() {
-		return date;
 	}
 
 	public boolean decimalsAllowed() {
@@ -34,10 +23,6 @@ public class Result {
 
 	public String getDescription() {
 		return description;
-	}
-
-	public Weapon getWeapon() {
-		return weapon;
 	}
 
 	public double getResult() {
@@ -71,7 +56,7 @@ public class Result {
 			throws DataException {
 		Shot newShotValue = new Shot(value);
 
-		if (newShotValue.hasDecimals() && !decimalsAllowed) {
+		if (newShotValue.hasDecimals() && !decimalsAllowed()) {
 			throw new DataException(
 					"This result does not allow decimal results");
 		}

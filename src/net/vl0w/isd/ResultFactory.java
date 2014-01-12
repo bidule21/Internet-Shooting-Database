@@ -3,7 +3,7 @@ package net.vl0w.isd;
 public class ResultFactory {
 
 	public static Result createCrossbowMatch() throws DataException {
-		Result result = new Result(Weapon.CROSSBOW_30M);
+		Result result = new Result();
 		result.setDescription("30m Crossbow Match");
 		result.setDecimalsAllowed(false);
 
@@ -14,7 +14,7 @@ public class ResultFactory {
 	}
 
 	public static Result createAirRifle(int shotCount) throws DataException {
-		Result result = new Result(Weapon.AIRRIFLE);
+		Result result = new Result();
 		result.setDescription("Air Rifle (" + shotCount + ")");
 		result.setDecimalsAllowed(true);
 
