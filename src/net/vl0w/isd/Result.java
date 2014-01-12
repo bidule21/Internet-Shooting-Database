@@ -78,6 +78,11 @@ public class Result {
 	}
 
 	void addSegment(Segment segment) throws DataException {
+		// Check: Segment already existing?
+		if (shotMap.containsKey(segment)) {
+			throw new DataException("Segment already existing");
+		}
+
 		// Init a shot list with shots with value 0
 		List<Shot> shotList = new ArrayList<>();
 		for (int i = 0; i < segment.getShotCount(); i++) {

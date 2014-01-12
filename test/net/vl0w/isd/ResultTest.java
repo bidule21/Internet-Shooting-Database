@@ -10,8 +10,8 @@ public class ResultTest {
 	public void setShot_NoSegmentAsParameter_MultipleSegmentsInResult_Error()
 			throws DataException {
 		Result result = new Result();
-		result.addSegment(segment());
-		result.addSegment(segment());
+		result.addSegment(segment(Position.KNEELING, 10));
+		result.addSegment(segment(Position.STANDING, 10));
 
 		result.setShot(1, 10.9);
 	}
@@ -42,9 +42,9 @@ public class ResultTest {
 	public void setShot_MultipleSegments_IllegalSegmentSpecified_Error()
 			throws DataException {
 		Result result = new Result();
-		result.addSegment(segment());
+		result.addSegment(segment(Position.KNEELING, 10));
 
-		result.setShot(segment(), 1, 10.5);
+		result.setShot(segment(Position.STANDING, 10), 1, 10.5);
 	}
 
 	@Test(expected = DataException.class)
@@ -95,11 +95,22 @@ public class ResultTest {
 		assertEquals(103.6, result.getResult(), 1);
 	}
 
+	@Test(expected = DataException.class)
+	public void addSegment_SameSegmentAlreadyExisting() throws DataException {
+		Result result = new Result();
+		result.addSegment(segment(Position.UNKNOWN, 10));
+		result.addSegment(segment(Position.UNKNOWN, 10));
+	}
+
 	private Segment segment() {
-		return segment(10);
+		return segment(Position.UNKNOWN, 10);
 	}
 
 	private Segment segment(int shots) {
 		return new Segment(Position.UNKNOWN, shots);
+	}
+
+	private Segment segment(Position position, int shots) {
+		return new Segment(position, shots);
 	}
 }
