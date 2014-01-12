@@ -22,29 +22,19 @@
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<instrumentation>
-						<ignores>
-							<ignore>com.example.boringcode.*</ignore>
-						</ignores>
-						<excludes>
-							<exclude>com/example/dullcode/**/*.class</exclude>
-							<exclude>com/example/**/*Test.class</exclude>
-						</excludes>
-					</instrumentation>
+					<format>xml</format>
+					<maxmem>256m</maxmem>
+					<aggregate>false</aggregate>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.eluder.coveralls</groupId>
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>2.1.0</version>
+				<configuration>
+					<sourceEncoding>UTF-8</sourceEncoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
