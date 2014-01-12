@@ -4,7 +4,6 @@ public class ResultFactory {
 
 	public static Result createCrossbowMatch() throws DataException {
 		Result result = new Result();
-		result.setDescription("30m Crossbow Match");
 		result.setDecimalsAllowed(false);
 
 		result.addSegment(new Segment(Position.KNEELING, 30));
@@ -15,7 +14,6 @@ public class ResultFactory {
 
 	public static Result createAirRifle(int shotCount) throws DataException {
 		Result result = new Result();
-		result.setDescription("Air Rifle (" + shotCount + ")");
 		result.setDecimalsAllowed(true);
 
 		result.addSegment(new Segment(Position.STANDING, shotCount));

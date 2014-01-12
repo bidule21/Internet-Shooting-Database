@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class Result {
 
-	private String description;
 	private Map<Segment, List<Shot>> shotMap;
 	private boolean decimalsAllowed;
 
@@ -19,10 +18,6 @@ public class Result {
 
 	public boolean decimalsAllowed() {
 		return decimalsAllowed;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 
 	public double getResult() {
@@ -94,9 +89,5 @@ public class Result {
 
 	void setDecimalsAllowed(boolean value) {
 		this.decimalsAllowed = value;
-	}
-
-	void setDescription(String description) {
-		this.description = description;
 	}
 }
