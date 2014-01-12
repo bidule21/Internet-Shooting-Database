@@ -1,8 +1,6 @@
 package net.vl0w.isd;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
@@ -102,8 +100,6 @@ public class ResultTest {
 	}
 
 	private Segment segment(int shots) {
-		Segment segment = mock(Segment.class);
-		when(segment.getShotCount()).thenReturn(shots);
-		return segment;
+		return new Segment(Position.UNKNOWN, shots);
 	}
 }
