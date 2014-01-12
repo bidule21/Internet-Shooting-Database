@@ -1,7 +1,5 @@
 package net.vl0w.isd;
 
-
-
 public class Segment {
 	private Position position;
 	private int shotCount;
