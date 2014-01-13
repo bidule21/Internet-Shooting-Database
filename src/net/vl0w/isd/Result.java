@@ -8,10 +8,12 @@ import java.util.Set;
 
 public class Result {
 
+	private Shooter shooter;
 	private Map<Segment, List<Shot>> shotMap;
 	private boolean decimalsAllowed;
 
-	Result() {
+	Result(Shooter shooter) {
+		this.shooter = shooter;
 		this.shotMap = new HashMap<Segment, List<Shot>>();
 		this.decimalsAllowed = true;
 	}
@@ -36,6 +38,10 @@ public class Result {
 
 	public Set<Segment> getSegments() {
 		return shotMap.keySet();
+	}
+
+	public Shooter getShooter() {
+		return shooter;
 	}
 
 	public void setShot(int shotNumber, double value) throws DataException {

@@ -2,14 +2,21 @@ package net.vl0w.isd;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ResultTest {
 
+	private Result result;
+
+	@Before
+	public void createResult() {
+		result = new Result(null);
+	}
+
 	@Test(expected = DataException.class)
 	public void setShot_NoSegmentAsParameter_MultipleSegmentsInResult_Error()
 			throws DataException {
-		Result result = new Result();
 		result.addSegment(segment(Position.KNEELING, 10));
 		result.addSegment(segment(Position.STANDING, 10));
 
@@ -18,7 +25,6 @@ public class ResultTest {
 
 	@Test(expected = DataException.class)
 	public void setShot_TooMuchShotsForSegment_Error() throws DataException {
-		Result result = new Result();
 		result.addSegment(segment(5));
 
 		result.setShot(1, 10);
@@ -31,7 +37,6 @@ public class ResultTest {
 
 	@Test(expected = DataException.class)
 	public void setShot_NoDecimalsAllowed_Error() throws DataException {
-		Result result = new Result();
 		result.setDecimalsAllowed(false);
 		result.addSegment(segment());
 
@@ -41,7 +46,6 @@ public class ResultTest {
 	@Test(expected = DataException.class)
 	public void setShot_MultipleSegments_IllegalSegmentSpecified_Error()
 			throws DataException {
-		Result result = new Result();
 		result.addSegment(segment(Position.KNEELING, 10));
 
 		result.setShot(segment(Position.STANDING, 10), 1, 10.5);
@@ -49,7 +53,6 @@ public class ResultTest {
 
 	@Test(expected = DataException.class)
 	public void setShot_IllegalShotNumber_Error() throws DataException {
-		Result result = new Result();
 		result.addSegment(segment(5));
 
 		result.setShot(7, 10.5);
@@ -57,7 +60,6 @@ public class ResultTest {
 
 	@Test
 	public void getResult_OneSegment() throws DataException {
-		Result result = new Result();
 		result.setDecimalsAllowed(true);
 		result.addSegment(segment());
 
@@ -72,7 +74,6 @@ public class ResultTest {
 
 	@Test
 	public void getResult_ShotValueHasChanged() throws DataException {
-		Result result = new Result();
 		result.addSegment(segment());
 
 		result.setShot(1, 10.0);
@@ -97,7 +98,6 @@ public class ResultTest {
 
 	@Test(expected = DataException.class)
 	public void addSegment_SameSegmentAlreadyExisting() throws DataException {
-		Result result = new Result();
 		result.addSegment(segment(Position.UNKNOWN, 10));
 		result.addSegment(segment(Position.UNKNOWN, 10));
 	}
