@@ -26,10 +26,6 @@ public class Segment {
 			return false;
 		}
 
-		if (obj == this) {
-			return true;
-		}
-
 		Segment other = (Segment) obj;
 
 		EqualsBuilder equalsBuilder = new EqualsBuilder();
