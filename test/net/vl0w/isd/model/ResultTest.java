@@ -1,6 +1,7 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
 
 import static org.junit.Assert.assertEquals;
+import net.vl0w.isd.DataException;
 
 import org.junit.Before;
 import org.junit.Test;

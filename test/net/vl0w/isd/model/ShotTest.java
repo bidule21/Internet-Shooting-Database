@@ -1,7 +1,7 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
 
 import net.vl0w.isd.DataException;
-import net.vl0w.isd.Shot;
+import net.vl0w.isd.model.Shot;
 
 import org.junit.Test;
 

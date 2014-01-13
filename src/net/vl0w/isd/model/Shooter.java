@@ -1,4 +1,4 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
 
 public class Shooter {
 

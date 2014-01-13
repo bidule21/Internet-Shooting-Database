@@ -1,4 +1,4 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

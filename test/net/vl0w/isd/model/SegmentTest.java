@@ -1,7 +1,7 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
 
-import static net.vl0w.isd.Position.KNEELING;
-import static net.vl0w.isd.Position.STANDING;
+import static net.vl0w.isd.model.Position.KNEELING;
+import static net.vl0w.isd.model.Position.STANDING;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;

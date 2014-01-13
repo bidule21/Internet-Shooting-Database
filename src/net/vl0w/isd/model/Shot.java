@@ -1,4 +1,6 @@
-package net.vl0w.isd;
+package net.vl0w.isd.model;
+
+import net.vl0w.isd.DataException;
 
 public class Shot {
 	private double value;
