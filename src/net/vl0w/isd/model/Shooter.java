@@ -1,6 +1,6 @@
 package net.vl0w.isd.model;
 
-public class Shooter {
+public class Shooter implements Storable {
 
 	private String firstName;
 	private String lastName;
