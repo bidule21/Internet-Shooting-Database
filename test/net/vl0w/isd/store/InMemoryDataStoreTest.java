@@ -10,31 +10,31 @@ import org.junit.Test;
 
 public class InMemoryDataStoreTest {
 
-	private InMemoryDataStore dataProvider;
+	private InMemoryDataStore dataStore;
 
 	@Before
 	public void createDataProvider() {
-		dataProvider = new InMemoryDataStore();
+		dataStore = new InMemoryDataStore();
 	}
 
 	@Test
 	public void testPutResult() {
 		Result result = new Shooter("Jerry", "Jackson").newResult();
-		dataProvider.put(result);
-		assertEquals(1, dataProvider.getResults().size());
-		assertEquals(result, dataProvider.getResults().get(0));
+		dataStore.put(result);
+		assertEquals(1, dataStore.getResults().size());
+		assertEquals(result, dataStore.getResults().get(0));
 	}
 
 	@Test
 	public void testPutShooter() {
 		Shooter shooter = new Shooter("Jerry", "Jackson");
-		dataProvider.put(shooter);
-		assertEquals(1, dataProvider.getShooters().size());
-		assertEquals(shooter, dataProvider.getShooters().get(0));
+		dataStore.put(shooter);
+		assertEquals(1, dataStore.getShooters().size());
+		assertEquals(shooter, dataStore.getShooters().get(0));
 	}
 
 	@Test
 	public void testGetShooters_EmptyByDefault() {
-		assertEquals(0, dataProvider.getResults().size());
+		assertEquals(0, dataStore.getResults().size());
 	}
 }
