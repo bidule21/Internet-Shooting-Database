@@ -8,7 +8,7 @@ import java.util.Set;
 
 import net.vl0w.isd.DataException;
 
-public class Result {
+public class Result implements Storable {
 
 	private Shooter shooter;
 	private Map<Segment, List<Shot>> shotMap;
