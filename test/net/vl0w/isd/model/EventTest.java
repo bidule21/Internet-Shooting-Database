@@ -11,30 +11,30 @@ public class EventTest {
 
 	private Event event;
 	private Shooter jerryJackson;
+	private Shooter jamesBond;
 	private Shooter williamWallace;
-	private Shooter franzLudwig;
 
 	@Before
 	public void initEventAndAttendees() {
 		jerryJackson = new Shooter("Jerry", "Jackson");
+		jamesBond = new Shooter("James", "Bond");
 		williamWallace = new Shooter("William", "Wallace");
-		franzLudwig = new Shooter("Franz", "Ludwig");
 
 		event = new Event();
 		event.addAttendee(jerryJackson);
-		event.addAttendee(williamWallace);
+		event.addAttendee(jamesBond);
 	}
 
 	@Test
 	public void attendingShooters() {
 		assertTrue(event.isAttending(jerryJackson));
-		assertTrue(event.isAttending(williamWallace));
-		assertFalse(event.isAttending(franzLudwig));
+		assertTrue(event.isAttending(jamesBond));
+		assertFalse(event.isAttending(williamWallace));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void addResultForIllegalAttendee() {
-		event.result(franzLudwig);
+		event.result(williamWallace);
 	}
 
 	@Test
