@@ -38,7 +38,7 @@ public class ResultTest {
 	public void singlePosition_singleSeries_overallResult() {
 		result.addSeries(Position.KNEELING, 104.9);
 		assertEquals(104.9, result.getResult(), 1);
-		assertEquals(104.9, result.getResult(Position.KNEELING), 1);
+		assertEquals(104.9, result.position(Position.KNEELING), 1);
 	}
 
 	@Test
@@ -46,7 +46,7 @@ public class ResultTest {
 		result.addSeries(Position.KNEELING, 104.9);
 		result.addSeries(Position.KNEELING, 102.3);
 		assertEquals(207.2, result.getResult(), 1);
-		assertEquals(207.2, result.getResult(Position.KNEELING), 1);
+		assertEquals(207.2, result.position(Position.KNEELING), 1);
 	}
 
 	@Test
@@ -54,8 +54,8 @@ public class ResultTest {
 		result.addSeries(Position.KNEELING, 103.6);
 		result.addSeries(Position.STANDING, 102.3);
 		assertEquals(205.9, result.getResult(), 1);
-		assertEquals(103.6, result.getResult(Position.KNEELING), 1);
-		assertEquals(102.3, result.getResult(Position.STANDING), 1);
+		assertEquals(103.6, result.position(Position.KNEELING), 1);
+		assertEquals(102.3, result.position(Position.STANDING), 1);
 	}
 
 	@Test
@@ -70,8 +70,8 @@ public class ResultTest {
 		assertEquals(513.9, result.getResult(), 1);
 
 		// Position result check
-		assertEquals(205.1, result.getResult(Position.KNEELING), 1);
-		assertEquals(308.8, result.getResult(Position.STANDING), 1);
+		assertEquals(205.1, result.position(Position.KNEELING), 1);
+		assertEquals(308.8, result.position(Position.STANDING), 1);
 
 		// Series result check
 		assertEquals(103.6, result.series(Position.KNEELING, 0), 1);
@@ -82,7 +82,7 @@ public class ResultTest {
 	}
 
 	@Test
-	public void illegalSeriesIndex_Return0() {
+	public void illegalSeriesIndex_ReturnZero() {
 		result.addSeries(102.3);
 		result.addSeries(103.4);
 		assertEquals(0, result.series(-1), 1);

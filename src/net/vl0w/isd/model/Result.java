@@ -17,26 +17,6 @@ public class Result implements Storable {
 		}
 	}
 
-	public double getResult() {
-		double result = 0;
-
-		for (Position position : Position.values()) {
-			result += getResult(position);
-		}
-
-		return result;
-	}
-
-	public double getResult(Position position) {
-		double result = 0;
-
-		for (double seriesResult : positionSeries.get(position)) {
-			result += seriesResult;
-		}
-
-		return result;
-	}
-
 	public void addSeries(double seriesResult) {
 		addSeries(Position.UNKNOWN, seriesResult);
 	}
@@ -55,5 +35,25 @@ public class Result implements Storable {
 		} catch (IndexOutOfBoundsException e) {
 			return 0;
 		}
+	}
+
+	public double position(Position position) {
+		double result = 0;
+	
+		for (double seriesResult : positionSeries.get(position)) {
+			result += seriesResult;
+		}
+	
+		return result;
+	}
+
+	public double getResult() {
+		double result = 0;
+	
+		for (Position position : Position.values()) {
+			result += position(position);
+		}
+	
+		return result;
 	}
 }
