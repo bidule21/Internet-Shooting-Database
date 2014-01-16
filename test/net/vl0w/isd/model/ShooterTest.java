@@ -18,10 +18,4 @@ public class ShooterTest {
 	public void testToString() {
 		assertEquals("Jerry Jackson", shooter.toString());
 	}
-
-	@Test
-	public void testNewResult() {
-		Result result = shooter.newResult();
-		assertEquals(shooter, result.getShooter());
-	}
 }

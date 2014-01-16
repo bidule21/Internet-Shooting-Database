@@ -18,10 +18,6 @@ public class Shooter implements Storable {
 		return lastName;
 	}
 
-	public Result newResult() {
-		return new Result(this);
-	}
-
 	@Override
 	public String toString() {
 		return getFirstName() + " " + getLastName();
