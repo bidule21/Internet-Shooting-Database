@@ -22,6 +22,9 @@ public class Result implements Storable {
 	}
 
 	public void addSeries(Position position, double seriesResult) {
+		if (seriesResult < 0 || seriesResult > 109) {
+			throw new IllegalArgumentException();
+		}
 		positionSeries.get(position).add(seriesResult);
 	}
 
@@ -39,21 +42,21 @@ public class Result implements Storable {
 
 	public double position(Position position) {
 		double result = 0;
-	
+
 		for (double seriesResult : positionSeries.get(position)) {
 			result += seriesResult;
 		}
-	
+
 		return result;
 	}
 
 	public double getResult() {
 		double result = 0;
-	
+
 		for (Position position : Position.values()) {
 			result += position(position);
 		}
-	
+
 		return result;
 	}
 }

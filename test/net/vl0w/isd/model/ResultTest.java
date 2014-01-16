@@ -91,4 +91,15 @@ public class ResultTest {
 		assertEquals(0, result.series(2), 1);
 		assertEquals(0, result.series(3), 1);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void tooHighSeriesValue() {
+		result.addSeries(109.1);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void negativeSeriesValue() {
+		result.addSeries(-102.3);
+	}
+
 }
