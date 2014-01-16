@@ -35,14 +35,14 @@ public class ResultTest {
 	}
 
 	@Test
-	public void singlePosition_singleSeries_overallResult() {
+	public void singlePosition_singleSeries() {
 		result.addSeries(Position.KNEELING, 104.9);
 		assertEquals(104.9, result.getResult(), 1);
 		assertEquals(104.9, result.position(Position.KNEELING), 1);
 	}
 
 	@Test
-	public void singlePosition_multipleSeries_overallResult() {
+	public void singlePosition_multipleSeries() {
 		result.addSeries(Position.KNEELING, 104.9);
 		result.addSeries(Position.KNEELING, 102.3);
 		assertEquals(207.2, result.getResult(), 1);
@@ -50,7 +50,7 @@ public class ResultTest {
 	}
 
 	@Test
-	public void multiplePositions_singleSeries_overallResult() {
+	public void multiplePositions_singleSeries() {
 		result.addSeries(Position.KNEELING, 103.6);
 		result.addSeries(Position.STANDING, 102.3);
 		assertEquals(205.9, result.getResult(), 1);
