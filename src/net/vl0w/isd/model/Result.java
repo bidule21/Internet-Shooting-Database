@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Result implements Storable {
 
+	private static final long serialVersionUID = 4125349219545397626L;
+
 	private Map<Position, List<Double>> positionSeries;
 
 	public Result() {
