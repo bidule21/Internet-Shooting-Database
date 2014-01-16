@@ -46,7 +46,14 @@ public class Result implements Storable {
 	}
 
 	public double series(int seriesIndex) {
-		return positionSeries.get(Position.UNKNOWN).get(seriesIndex);
+		return series(Position.UNKNOWN, seriesIndex);
 	}
 
+	public double series(Position position, int seriesIndex) {
+		try {
+			return positionSeries.get(position).get(seriesIndex);
+		} catch (IndexOutOfBoundsException e) {
+			return 0;
+		}
+	}
 }
