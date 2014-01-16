@@ -1,7 +1,6 @@
 package net.vl0w.isd.model;
 
 import static org.junit.Assert.assertEquals;
-import net.vl0w.isd.DataException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,107 +10,63 @@ public class ResultTest {
 	private Result result;
 
 	@Before
-	public void createResult() {
-		result = new Result(null);
-	}
-
-	@Test(expected = DataException.class)
-	public void setShot_NoSegmentAsParameter_MultipleSegmentsInResult_Error()
-			throws DataException {
-		result.addSegment(segment(Position.KNEELING, 10));
-		result.addSegment(segment(Position.STANDING, 10));
-
-		result.setShot(1, 10.9);
-	}
-
-	@Test(expected = DataException.class)
-	public void setShot_TooMuchShotsForSegment_Error() throws DataException {
-		result.addSegment(segment(5));
-
-		result.setShot(1, 10);
-		result.setShot(2, 10);
-		result.setShot(3, 10);
-		result.setShot(4, 10);
-		result.setShot(5, 10);
-		result.setShot(6, 10);
-	}
-
-	@Test(expected = DataException.class)
-	public void setShot_NoDecimalsAllowed_Error() throws DataException {
-		result.setDecimalsAllowed(false);
-		result.addSegment(segment());
-
-		result.setShot(1, 10.5);
-	}
-
-	@Test(expected = DataException.class)
-	public void setShot_MultipleSegments_IllegalSegmentSpecified_Error()
-			throws DataException {
-		result.addSegment(segment(Position.KNEELING, 10));
-
-		result.setShot(segment(Position.STANDING, 10), 1, 10.5);
-	}
-
-	@Test(expected = DataException.class)
-	public void setShot_IllegalShotNumber_Error() throws DataException {
-		result.addSegment(segment(5));
-
-		result.setShot(7, 10.5);
+	public void initResult() {
+		result = new Result();
 	}
 
 	@Test
-	public void getResult_OneSegment() throws DataException {
-		result.setDecimalsAllowed(true);
-		result.addSegment(segment());
-
-		result.setShot(1, 10.5);
-		result.setShot(2, 10.2);
-		result.setShot(3, 10.4);
-		result.setShot(4, 10.9);
-		result.setShot(5, 9.9);
-
-		assertEquals(51.9, result.getResult(), 1);
+	public void noPosition_noSeries() {
+		assertEquals(0, result.getResult(), 1);
 	}
 
 	@Test
-	public void getResult_ShotValueHasChanged() throws DataException {
-		result.addSegment(segment());
-
-		result.setShot(1, 10.0);
-		result.setShot(2, 10.1);
-		result.setShot(3, 10.2);
-		result.setShot(4, 10.3);
-		result.setShot(5, 10.4);
-		result.setShot(6, 10.5);
-		result.setShot(7, 10.6);
-		result.setShot(8, 10.7);
-		result.setShot(9, 10.8);
-		result.setShot(10, 10.9);
-
-		assertEquals(104.5, result.getResult(), 1);
-
-		// Set sixth shot
-		result.setShot(5, 9.5);
-
-		// Assert all shots
-		assertEquals(103.6, result.getResult(), 1);
+	public void noPosition_singleSeries() {
+		result.addSeries(104.9);
+		assertEquals(104.9, result.getResult(), 1);
 	}
 
-	@Test(expected = DataException.class)
-	public void addSegment_SameSegmentAlreadyExisting() throws DataException {
-		result.addSegment(segment(Position.UNKNOWN, 10));
-		result.addSegment(segment(Position.UNKNOWN, 10));
+	@Test
+	public void noPosition_multipleSeries() {
+		result.addSeries(104.9);
+		result.addSeries(102.3);
+		assertEquals(207.2, result.getResult(), 1);
+		assertEquals(104.9, result.series(0), 1);
+		assertEquals(102.3, result.series(1), 1);
 	}
 
-	private Segment segment() {
-		return segment(Position.UNKNOWN, 10);
+	@Test
+	public void singlePosition_singleSeries() {
+		result.addSeries(Position.KNEELING, 104.9);
+		assertEquals(104.9, result.getResult(), 1);
+		assertEquals(104.9, result.getResult(Position.KNEELING), 1);
 	}
 
-	private Segment segment(int shots) {
-		return new Segment(Position.UNKNOWN, shots);
+	@Test
+	public void singlePosition_multipleSeries() {
+		result.addSeries(Position.KNEELING, 104.9);
+		result.addSeries(Position.KNEELING, 102.3);
+		assertEquals(207.2, result.getResult(), 1);
+		assertEquals(207.2, result.getResult(Position.KNEELING), 1);
 	}
 
-	private Segment segment(Position position, int shots) {
-		return new Segment(position, shots);
+	@Test
+	public void multiplePositions_singleSeries() {
+		result.addSeries(Position.KNEELING, 103.6);
+		result.addSeries(Position.STANDING, 102.3);
+		assertEquals(205.9, result.getResult(), 1);
+		assertEquals(103.6, result.getResult(Position.KNEELING), 1);
+		assertEquals(102.3, result.getResult(Position.STANDING), 1);
+	}
+
+	@Test
+	public void multiplePositions_multipleSeries() {
+		result.addSeries(Position.KNEELING, 103.6);
+		result.addSeries(Position.KNEELING, 101.5);
+		result.addSeries(Position.STANDING, 102.3);
+		result.addSeries(Position.STANDING, 106.3);
+		result.addSeries(Position.STANDING, 100.2);
+		assertEquals(513.9, result.getResult(), 1);
+		assertEquals(205.1, result.getResult(Position.KNEELING), 1);
+		assertEquals(308.8, result.getResult(Position.STANDING), 1);
 	}
 }
