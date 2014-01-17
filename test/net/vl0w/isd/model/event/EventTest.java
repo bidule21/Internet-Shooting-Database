@@ -3,8 +3,8 @@ package net.vl0w.isd.model.event;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import net.vl0w.isd.model.Result;
 import net.vl0w.isd.model.Shooter;
+import net.vl0w.isd.model.result.Result;
 
 import org.junit.Before;
 import org.junit.Test;

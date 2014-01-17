@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.vl0w.isd.model.Result;
 import net.vl0w.isd.model.Shooter;
+import net.vl0w.isd.model.result.Result;
 
 public class ShooterResultContainer implements Serializable {
 

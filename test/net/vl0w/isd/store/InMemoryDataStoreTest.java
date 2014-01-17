@@ -2,8 +2,8 @@ package net.vl0w.isd.store;
 
 import static org.junit.Assert.assertEquals;
 import net.vl0w.isd.DataStoreException;
-import net.vl0w.isd.model.Result;
 import net.vl0w.isd.model.Shooter;
+import net.vl0w.isd.model.result.Result;
 
 import org.junit.Before;
 import org.junit.Test;

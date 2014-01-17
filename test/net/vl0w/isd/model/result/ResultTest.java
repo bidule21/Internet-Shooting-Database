@@ -1,4 +1,4 @@
-package net.vl0w.isd.model;
+package net.vl0w.isd.model.result;
 
 import static org.junit.Assert.assertEquals;
 

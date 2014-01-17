@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.vl0w.isd.DataStoreException;
-import net.vl0w.isd.model.Result;
 import net.vl0w.isd.model.Shooter;
 import net.vl0w.isd.model.Storable;
+import net.vl0w.isd.model.result.Result;
 
 public class InMemoryDataStore {
 

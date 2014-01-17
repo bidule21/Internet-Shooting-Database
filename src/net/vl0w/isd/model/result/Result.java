@@ -1,9 +1,11 @@
-package net.vl0w.isd.model;
+package net.vl0w.isd.model.result;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import net.vl0w.isd.model.Storable;
 
 public class Result implements Storable {
 
