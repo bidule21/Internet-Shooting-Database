@@ -3,7 +3,7 @@ package net.vl0w.isd.model.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.vl0w.isd.model.Storable;
+import net.vl0w.isd.store.Storable;
 
 public class Event extends ShooterResultContainer implements Storable {
 

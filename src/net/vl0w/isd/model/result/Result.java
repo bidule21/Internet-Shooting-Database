@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.vl0w.isd.model.Storable;
+import net.vl0w.isd.store.Storable;
 
 public class Result implements Storable {
 

@@ -1,5 +1,7 @@
 package net.vl0w.isd.model;
 
+import net.vl0w.isd.store.Storable;
+
 public class Shooter implements Storable {
 
 	private static final long serialVersionUID = 2464780528346612896L;
