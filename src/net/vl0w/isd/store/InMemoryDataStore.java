@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.vl0w.isd.DataStoreException;
 import net.vl0w.isd.model.Shooter;
 import net.vl0w.isd.model.Storable;
 import net.vl0w.isd.model.result.Result;
@@ -18,7 +17,7 @@ public class InMemoryDataStore {
 		this.cacheMap = new HashMap<>();
 	}
 
-	public void put(Storable storable) throws DataStoreException {
+	public void put(Storable storable) {
 		Class<? extends Storable> storableClass = storable.getClass();
 		get(storableClass).add(storable);
 	}
@@ -29,15 +28,6 @@ public class InMemoryDataStore {
 
 	public List<Shooter> getShooters() {
 		return getCasted(Shooter.class);
-	}
-
-	protected Map<Class<? extends Storable>, List<Storable>> getCacheMap() {
-		return cacheMap;
-	}
-
-	protected void setCacheMap(
-			Map<Class<? extends Storable>, List<Storable>> cacheMap) {
-		this.cacheMap = cacheMap;
 	}
 
 	private <V extends Storable> List<V> getCasted(Class<V> key) {

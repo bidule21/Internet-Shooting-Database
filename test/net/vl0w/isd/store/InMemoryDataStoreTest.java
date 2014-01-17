@@ -1,7 +1,6 @@
 package net.vl0w.isd.store;
 
 import static org.junit.Assert.assertEquals;
-import net.vl0w.isd.DataStoreException;
 import net.vl0w.isd.model.Shooter;
 import net.vl0w.isd.model.result.Result;
 
@@ -18,7 +17,7 @@ public class InMemoryDataStoreTest {
 	}
 
 	@Test
-	public void testPutResult() throws DataStoreException {
+	public void testPutResult() {
 		Result result = new Result();
 		dataStore.put(result);
 		assertEquals(1, dataStore.getResults().size());
@@ -26,7 +25,7 @@ public class InMemoryDataStoreTest {
 	}
 
 	@Test
-	public void testPutShooter() throws DataStoreException {
+	public void testPutShooter() {
 		Shooter shooter = new Shooter("Jerry", "Jackson");
 		dataStore.put(shooter);
 		assertEquals(1, dataStore.getShooters().size());
