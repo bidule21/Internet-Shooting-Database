@@ -5,3 +5,4 @@ deploy:
   provider: heroku
   api_key:
     secure: AusY69gpkfNxsTa27lb4iQ/wp5K2Fx0UeBenqEKmY8NRJxzA0wI92DMhU2EeQ0qFzkEqoF3k4V+SFBgm0dd3TSoaniTrsiewGWhiziJABcGm7glU29K7/FgDzGz58RTnVfAgy+XW2ZVUSuLT4tlsFid/31x2snqIhijH/5cjNWs=
+  app: internet-shooting-database
