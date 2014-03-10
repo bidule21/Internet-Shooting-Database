@@ -1,3 +1,6 @@
 language: java
 after_success:
   - mvn clean cobertura:cobertura coveralls:cobertura
+deploy:
+  provider: heroku
+  api_key: "BpxcC3CmI1wD8e3GTuUzaAqBKPTSI97qZ50zvbREsTVbOitQYNlNllqLyj6saf273wu3Mml+m0ucpE5YFXA4OiBttwG5k1FJKpzlOfUwrIcTHwUzjKm2pTFgGfhXdwrzaI5UkJtZXZXnnsXXX8po5LOyOns6s9RXtl1cCvrvQjM="
